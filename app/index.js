@@ -80,6 +80,7 @@ var HotTowelGenerator = generators.Base.extend({
 
     assets: function () {
         this.copy('gulp.png', 'gulp.png');
+        this.copy('minion.png', 'minion.png');
     },
 
     testRunnerFiles: function () {

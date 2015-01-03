@@ -630,7 +630,7 @@ function notify(options) {
     var notifier = require('node-notifier');
     var notifyOptions = {
         sound: 'Bottle',
-        contentImage: path.join(__dirname, 'gulp.png'),
+        contentImage: path.join(__dirname, 'minion.png'),
         icon: path.join(__dirname, 'gulp.png')
     };
     _.assign(notifyOptions, options);
