@@ -108,6 +108,7 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
 gulp.task('fonts', ['clean-fonts'], function() {
     log('Copying fonts');
     return gulp.src(config.fonts)
+        .pipe($.if(args.sfdc, gulp.dest(config.staticResource + 'fonts')))
         .pipe(gulp.dest(config.build + 'fonts'));
 });
 
@@ -122,6 +123,7 @@ gulp.task('images', ['clean-images'], function() {
         .pipe($.imagemin({
             optimizationLevel: 3
         }))
+        .pipe($.if(args.sfdc, gulp.dest(config.staticResource + 'images')))
         .pipe(gulp.dest(dest));
 });
 
@@ -240,6 +242,7 @@ gulp.task('html', ['test', 'inject'], function() {
         .pipe($.useref())
         // Replace the file names in the html with rev numbers
         .pipe($.revReplace())
+        .pipe($.if(args.sfdc, gulp.dest(config.staticResource)))
         .pipe(gulp.dest(config.build));
 });
 

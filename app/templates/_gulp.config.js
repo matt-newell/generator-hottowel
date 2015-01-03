@@ -39,6 +39,7 @@ module.exports = function() {
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         images: client + '/images/**/*.*',
         build: './build/',
+        staticResource: '../resource-bundles/<%= staticResource %>.resource/',
         temp: temp,
         report: './report/',
 

@@ -36,11 +36,17 @@ var HotTowelGenerator = generators.Base.extend({
             name: 'appName',
             message: 'What would you like to name the app?',
             default: this.appName || path.basename(process.cwd())
+        },{
+           type: 'input',
+            name: 'staticResource',
+            message: 'What would you like to name the static resource?',
+            default: '../resource-bundles/'
         }];
 
         this.prompt(prompts, function (answers) {
             this.appName = answers.appName;
             this.appName = this.appName || 'hottowel'; //path.basename(process.cwd());
+            this.staticResource = answers.staticResource;
             done();
         }.bind(this));
     },
@@ -58,7 +64,8 @@ var HotTowelGenerator = generators.Base.extend({
 
     packageFiles: function () {
         var context = {
-            appName: this.appName
+            appName: this.appName,
+            staticResource: this.staticResource
         };
 
         this.copy('_package.json', 'package.json');
@@ -67,6 +74,8 @@ var HotTowelGenerator = generators.Base.extend({
         this.template('_gulp.config.js', 'gulp.config.js');
         this.template('_karma.conf.js', 'karma.conf.js');
         this.template('_README.md', 'README.md');
+        this.copy('meta.xml', '../src/staticresources/' + this.staticResource + '.resource-meta.xml');
+
     },
 
     assets: function () {

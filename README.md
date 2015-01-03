@@ -50,6 +50,9 @@ Create an Angular application using the HotTowel style (via a [Yeoman](http://ye
     yo hottowel [appName]
     ```
 
+### Static Resource Name
+ - Next name your static resource to create the metadata for MavensMate
+
 ## Running HotTowel
 
 ### Linting
@@ -267,6 +270,10 @@ The `blocks.router` module contains a routing helper module that assists in addi
 - `gulp serve-build`
  
     Serve the optimized code from the build folder and launch it in a browser.
+
+- `gulp serve-build --sfdc`
+ 
+    Build process plus creates static resource to be pushed with MavensMate.    
 
 - `gulp serve-build --nosync`
 
